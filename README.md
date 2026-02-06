@@ -1,0 +1,1 @@
+sdk install java  21.0.9-amzn
