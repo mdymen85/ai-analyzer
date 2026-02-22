@@ -19,6 +19,7 @@ public class AIController {
 
     @GetMapping("/ask")
     public String ask(@RequestParam String message) {
+
         return chatClient.prompt(message)
                          .call()
                          .content();
