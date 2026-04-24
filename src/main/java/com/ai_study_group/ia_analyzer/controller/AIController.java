@@ -1,5 +1,6 @@
 package com.ai_study_group.ia_analyzer.controller;
 
+import com.ai_study_group.ia_analyzer.service.PerformanceTools;
 import com.ai_study_group.ia_analyzer.service.WeatherService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,10 @@ public class AIController {
 
     private final ChatClient chatClient;
 
-    public AIController(ChatClient.Builder builder, WeatherService weatherService) {
+    public AIController(ChatClient.Builder builder, WeatherService weatherService,
+                        PerformanceTools performanceTools) {
         this.chatClient = builder
-            .defaultTools(weatherService) // Register all @Tool methods in this bean
+            .defaultTools(weatherService, performanceTools) // Register all @Tool methods in this bean
             .build();
     }
 
